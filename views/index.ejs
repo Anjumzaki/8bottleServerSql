@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Turtle Tree Labs</title>
+
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo1.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script>
+      document.documentElement.className = "js";
+      var supportsCssVars = function() {
+        var e,
+          t = document.createElement("style");
+        return (
+          (t.innerHTML = "root: { --tmp-var: bold; }"),
+          document.head.appendChild(t),
+          (e = !!(
+            window.CSS &&
+            window.CSS.supports &&
+            window.CSS.supports("font-weight", "var(--tmp-var)")
+          )),
+          t.parentNode.removeChild(t),
+          e
+        );
+      };
+      supportsCssVars() ||
+        alert(
+          "Please view this demo in a modern browser that supports CSS Variables."
+        );
+    </script>
+  </head>
+  <body class="demo-1 loading">
+    <main>
+      <nav
+        class="navbar navbar-expand-lg navbar-light bgOrange pd-20 fixed-top"
+      >
+        <a class="navbar-brand" href="/">
+          <img src="/assets/images/TurtleTreeLabs_Logo_White.png" alt="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link scroll" href="#story">Story</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scroll" href="#how">How </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scroll" href="#team">Team </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scroll" href="#media">Media </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scroll" href="#contact">Contact </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="content">
+        <div class="content__section">
+          <div class="content__main  exLight mainHeadingTop">
+            <h1 class="headingFirst exLight">
+              Clean Milk for <br />
+              People & Planet.
+            </h1>
+          </div>
+          <h2 class="content__text"></h2>
+        </div>
+        <div class="content__section">
+          <section class="row" id="feed">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12  paras">
+              <p>
+                We envision a future where all children and families anywhere in
+                the world have access to safe, clean milk and milk products of
+                full-composition, function, and flavor.
+              </p>
+              <p class="bottomLine"></p>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+              <video
+                width="100%"
+                autoplay
+                loop
+                muted
+                src="./assets/images/baby-smallest.mp4"
+              ></video>
+              <!-- <img src="./assets/images/Links/1.png" alt="" /> -->
+            </div>
+          </section>
+          <h2 class="content__text">Feed</h2>
+        </div>
+        <div class="content__section forDesktop">
+          <section class="row" id="save">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+              <video
+                width="100%"
+                autoplay
+                loop
+                muted
+                src="./assets/images/microscope-small.mp4"
+              ></video>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12  paras">
+              <p>
+                TurtleTree Lab’s proprietary cell-based processes of creating
+                clean milk completely bypass the environmental degradation and
+                animal welfare issues of industrial dairy, nourishing
+                individuals and societies and reducing environmental, social,
+                and economic stressors.
+              </p>
+              <p class="bottomLine"></p>
+            </div>
+          </section>
+          <h2 class="content__text">Save</h2>
+        </div>
+        <div class="content__section forMobile">
+          <section class="row" id="save">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12  paras">
+              <p>
+                TurtleTree Lab’s proprietary cell-based processes of creating
+                clean milk completely bypass the environmental degradation and
+                animal welfare issues of industrial dairy, nourishing
+                individuals and societies and reducing environmental, social,
+                and economic stressors.
+              </p>
+              <p class="bottomLine"></p>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+              <video
+                width="100%"
+                autoplay
+                loop
+                muted
+                src="./assets/images/microscope-small.mp4"
+              ></video>
+            </div>
+          </section>
+          <h2 class="content__text">Save</h2>
+        </div>
+
+        <div class="content__section">
+          <section class="row" id="scale">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12  paras">
+              <p>
+                Supported by leading scientific, governmental, and investment
+                partners, TurtleTree Labs will license technical capabilities to
+                the world’s leading packaging facilities to scale rapidly into
+                the US$716B global dairy market.
+              </p>
+              <p class="bottomLine"></p>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+              <video
+                width="100%"
+                autoplay
+                muted
+                loop="loop"
+                src="./assets/images/earth-small.mp4"
+              ></video>
+            </div>
+          </section>
+          <h2 class="content__text">Scale</h2>
+        </div>
+        <div class="content__section" id="story">
+          <div class="story">
+            <h1>Story</h1>
+            <p class="underLineP">
+              Sustainable cell-based food tech 3.0 startup addresses US$716B
+              global dairy market and environmental crisis with ‘clean milk’
+            </p>
+            <p class="bottomLine"></p>
+          </div>
+          <div class="container storyBottom">
+            <div class="row">
+              <div
+                class="col-lg-6 col-xl-6 col-12"
+                style="padding-right: 30px;"
+              >
+                <p>
+                  TurtleTree Labs is a big-vision, proprietary sustainable food
+                  technology venture boldly addressing a multi-billion dollar
+                  global dairy market opportunity with the capability to create
+                  enormous financial and social value by providing accessible
+                  nourishment while staving off the threats of food, economic,
+                  and socio-political insecurities.
+                </p>
+                <h3>About the Company</h3>
+                <p>
+                  TurtleTree Labs is a Singapore-based startup addressing the
+                  value gap created by an insufficient and unsustainable
+                  animal-based dairy industry. Cell-based methods are used to
+                  make ‘clean milk’ and cultured milk products. Founders include
+                  alumni of Google, other U.S. and Asian productively disruptive
+                  technology ventures, and a leading U.S. traditional dairy.
+                </p>
+                <h3>Products and Services</h3>
+                <p>
+                  The company has created patent-protected technologies to make
+                  full-composition, full-functionality, full-flavor milk
+                  referencing humanely selected dairy cow cells then mimicking
+                  the natural process of milk production in the lab, essentially
+                  making real milk without the pollution, inefficient use of
+                  land, water and energy (natural resources), pathogen and
+                  disease risk, and tangled
+                </p>
+              </div>
+              <div class="col-lg-6 col-xl-6 col-12">
+                <p>
+                  regulatory politics. The product will be 95% less resource
+                  consumptive. TurtleTree will own the technologies that make
+                  the milk, leveraging and enabling its IP across global regions
+                  and manufacturers. Principal revenue streams include
+                  licensing, enablement consulting, and royalties. Additional
+                  revenue may include branded consumer products distributed
+                  regionally by global dairy companies.
+                </p>
+                <h3>
+                  Strategic Considerations
+                </h3>
+                <p>
+                  The company is advantaged by committed support from the
+                  various Singapore government agencies, in alignment with
+                  Singapore's goals to produce 30% of its own nutritional needs
+                  by 2030. The company will first address a propitious market
+                  opportunity in Asia, then move into other promising market
+                  areas similarly driven by increasing populations seeking
+                  better nourishment or encumbered by poor dairy infrastructure
+                  and declining environmental quality. Licensing the technology
+                  to powerful local processors and distributors pierces their
+                  hegemonic operating environments and defenses, further
+                  building company value. TurtleTree improves on each key
+                  driver—Nutritional value, food safety, convenience.
+                </p>
+              </div>
+            </div>
+          </div>
+          <h2 class="content__text"></h2>
+        </div>
+        <p class="fullBottomLine"></p>
+        <div class="content__section" id="how">
+          <div class="story">
+            <h1>How</h1>
+            <p class="underLineP jkasdfhajksfh" style="width:80%">
+              TurtleTree Labs acellular technology works by culturing mammary
+              cells in-vitro and inducing their natural ability to produce all
+              components of milk. Cellular agriculture is entirely safe and
+              widely used in the market today.
+              <br />
+              <br />
+
+              The first step involves obtaining stem cells from sources such as
+              milk. They are then transferred into an environment where they
+              convert into mammary gland cells. The mammary gland cells interact
+              with a special formula which causes the cells to lactate. The end
+              product - milk is obtained through a filtration process
+            </p>
+            <p class="bottomLine"></p>
+          </div>
+          <div class="container storyBottom">
+            <div class="row">
+              <div class="col-12">
+                <img
+                  style="width: 100%;"
+                  src="./assets/images/formation.jfif"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="row unedrFormations">
+              <div class="col-2">
+                <p>Stem Cells</p>
+              </div>
+              <div class="col-2">
+                <p>Bioreaction</p>
+              </div>
+              <div class="col-2">
+                <p>Formation</p>
+              </div>
+              <div class="col-2">
+                <p>Linkage</p>
+              </div>
+              <div class="col-2">
+                <p>Flow</p>
+              </div>
+            </div>
+            <h2 class="content__text"></h2>
+          </div>
+        </div>
+        <p class="fullBottomLine"></p>
+        <div class="content__section" id="team">
+          <div class="story">
+            <h1 style="margin-bottom: 100px;">Team.</h1>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-3 teamCards" id="name1">
+                <img src="./assets/images/Links/Fengru Lin.png" alt="" />
+                <p class="name">Fengru Lin</p>
+                <p class="desig">Chief Executive Officer</p>
+              </div>
+              <div class="col-lg-3 col-3 teamCards" id="name2">
+                <img src="./assets/images/Links/Max Rye.png" alt="" />
+                <p class="name">Max Rye</p>
+                <p class="desig">Chief Strategist</p>
+              </div>
+              <div class="col-lg-3 col-3 teamCards" id="name3">
+                <img src="./assets/images/Links/Dr Rabail Toor.png" alt="" />
+                <p class="name">Dr Rabail Toor</p>
+                <p class="desig">Chief Scientist</p>
+              </div>
+              <div class="col-lg-3 col-3 teamCards" id="name4">
+                <img src="./assets/images/Links/Dr Gen Yong.png" alt="" />
+                <p class="name">Dr Gen Yong</p>
+                <p class="desig">Chief Technological Officer</p>
+              </div>
+              <div id="t1wrapper">
+                <div class="teamDetails" id="t1">
+                  <h4>Fengru Lin</h4>
+                  <p>
+                    As our CEO, Fengru leads the overall TurtleTree Labs team.
+                    What started as a passion to make cheese turns into a hunt
+                    for good quality milk in Asia. Her sourcing attempt failed
+                    which prompted Fengru to dive into the idea of creating milk
+                    herself. With this, Fengru boldly founded TurtleTree Labs to
+                    create milk through cell-based methods. This technology will
+                    shape the future of not just how we get our dairy milk, but
+                    disrupt the whole infant nutrition market! For the first
+                    time in history, we are able to create real milk without
+                    having to go through an animal.
+                    
+                  </p>
+                </div>
+              </div>
+              <div id="t2wrapper">
+                <div class="teamDetails" id="t2">
+                  <h4>Max Rye</h4>
+                  <p>
+                    As our Chief Strategist, Max’s focus is on leading the
+                    TurtleTree Labs Team to transform the global milk industry.
+                    He holds a Computer Science degree from University of
+                    California. Hailing 20+ years of executive experience in the
+                    tech space, Max believes that technology can solve the
+                    world's biggest problems. Using cell-based technology
+                    TurtleTree Labs is able to create mammalian milk including
+                    human breast milk which will transform the entire infant
+                    formula industry. Max formulates strategies and gives
+                    direction to the team to accelerate the company’s growth to
+                    the next level.
+                  </p>
+                </div>
+              </div>
+              <div id="t3wrapper">
+                <div class="teamDetails" id="t3">
+                  <h4>Dr Rabail Toor</h4>
+                  <p>
+                    As our Chief Scientist, Dr. Rabail leads a team of amazing
+                    scientists in the development of our proprietary cell-based
+                    technology to create milk of all mammals. Dr. Rabail
+                    graduated from the University of Punjab with a PhD in
+                    Biology/ Biological Sciences. She has extensive research
+                    experience with stem cells, differentiation processes, and
+                    mammary cells through her involvement in aging,
+                    mitochondrial dysfunction, regenerative medicine, and the
+                    development of anti-breast cancer drugs research projects.
+                    She has also participated in national and global
+                    conferences, and her poster on mitochondrial dysfunction
+                    during cellular aging won first place at an international
+                    conference. Enraged by the maltreatment of animals and poor
+                    milk quality in the dairy industry, Dr. Rabail is extremely
+                    excited to be able to create such transformational
+                    technology.
+                  </p>
+                </div>
+              </div>
+
+              <div id="t4wrapper">
+                <div class="teamDetails" id="t4">
+                  <h4>Dr Gen Yong</h4>
+                  <p>
+                    As our Chief Technological Officer, Dr. Gen Yong will
+                    oversee the Bio-processing unit in the design and
+                    implementation of bioreactors for TurtleTree Labs. Dr. Gen
+                    Yong is an experienced scientist and innovator with over 10
+                    years of international experience in academic and industrial
+                    R&D in the healthcare and materials space. Dr. Gen Yong has
+                    helped spin-off 2 successful start-ups. His rich experience
+                    in adding value and impact via research commercialization
+                    and value capture to ecosystem partners in the medtech, food
+                    and nutrition and healthcare spaces, is invaluable to
+                    TurtleTree Labs.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-3 teamCards" id="name5">
+                <img src="./assets/images/Links/Dr Jonathan Loh.png" alt="" />
+                <p class="name">Dr Jonathan Loh</p>
+                <p class="desig">Chief Innovation Officer</p>
+              </div>
+              <div class="col-lg-3 col-3 teamCards" id="name6">
+                <img src="./assets/images/Links/Maira Tariq.png" alt="" />
+                <p class="name">Maira Tariq</p>
+                <p class="desig">Cell Biologist</p>
+              </div>
+              <div class="col-lg-3 col-3 teamCards" id="name7">
+                <img src="./assets/images/Links/Faisal Muhammad.png" alt="" />
+                <p class="name">Faisal</p>
+                <p class="desig">Cell Biologist</p>
+              </div>
+              <div class="col-lg-3 col-3 teamCards" id="name8">
+                <img src="./assets/images/Links/Sana Batool.png" alt="" />
+                <p class="name">Sana Batool</p>
+                <p class="desig">Molecular Biologist</p>
+              </div>
+              <div id="t5wrapper">
+                <div class="teamDetails" id="t5">
+                  <h4>Dr Jonathan Loh</h4>
+                  <p>
+                    As our Chief Innovation Officer, Dr. Jonathan takes point on
+                    the various products and technologies that the company
+                    adopts. Dr. Jonathan earned a PhD in Integrative Sciences
+                    and Engineering, and then a postdoctoral fellowship at
+                    Harvard Medical School. With several grants and two patents
+                    to his name, Dr. Jonathan has garnered worldwide acclaim for
+                    his research in cell fate engineering, cellular
+                    reprogramming, and regenerative medicine among other fields
+                    of stem cell technology. He has won numerous national,
+                    regional, and international accolades, most notable of which
+                    were the World Technology Award and MIT TR35 Asia Pacific
+                    awards for his breakthroughs in biotechnology.
+                  </p>
+                </div>
+              </div>
+              <div id="t6wrapper">
+                <div class="teamDetails" id="t6">
+                  <h4>Maira Tariq</h4>
+                  <p>
+                    As our Cell Biologist, Maira focuses on research and
+                    innovation of TurtleTree Labs cell-based technology. Maira
+                    graduated from the University of Punjab with a Master’s
+                    Degree in Biology/ Biological Sciences. She has done
+                    considerable stem cell research to determine the osteogenic
+                    and anti-adipogenic potential of Cissus quadrangularis
+                    through the process of cell differentiation in mice, as well
+                    as the vine’s anticarcinogenic activity in different human
+                    cell lines using cell proliferation assays.
+                  </p>
+                </div>
+              </div>
+              <div id="t7wrapper">
+                <div class="teamDetails" id="t7">
+                  <h4>Faisal</h4>
+                  <p>
+                    As our Cell Biologist, Faisal focuses on research and
+                    innovation of TurtleTree Labs cell-based technology. Faisal
+                    graduated from the University of Punjab with a Master’s
+                    Degree in Biology/ Biological Sciences. He has significant
+                    expertise in microbiology, molecular biology, and cell
+                    biology. His professional career includes experience as a
+                    research associate and microbiologist at national
+                    institutes, research labs, and companies. Faisal has
+                    participated in an array of national and international
+                    conferences, workshops and seminars. On top of that, he was
+                    selected to take part in a national, government-funded 
+                    project on the characterization of immunogenic regions of
+                    the dengue virus for a potential vaccine.
+                  </p>
+                </div>
+              </div>
+              <div id="t8wrapper">
+                <div class="teamDetails" id="t8">
+                  <h4>Sana Batool</h4>
+                  <p>
+                    As our molecular biologist, Sana performs experiments on
+                    molecules and cells to provide insights on how they interact
+                    and communicate. Sana is an outstanding researcher with
+                    expertise in Genomics, Proteomics, and especially in the use
+                    of Recombinant DNA technology to produce multifunctional
+                    enzymes for efficient hydrolysis of plant biomass, a
+                    research that was published in renowned scientific journals.
+                    Sana has earned several distinctions, awards and
+                    commendations. Most notably, Sana has won the best poster
+                    award at an international conference on Recent Innovations
+                    in Molecular Sciences. Striving to share her knowledge with
+                    budding researchers, she was also a biochemistry lecturer at
+                    a reputable institute.
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-3 col-3 teamCards" id="name9">
+                <img src="./assets/images/Links/Mkulima Britt.png" alt="" />
+                <p class="name">Mkulima Britt</p>
+                <p class="desig">Finance Advisor</p>
+              </div>
+              <div class="col-lg-3 col-3 teamCards" id="name10">
+                <img src="./assets/images/Links/Billie Thein.png" alt="" />
+                <p class="name">Billie Thein</p>
+                <p class="desig">Marketing Advisor</p>
+              </div>
+              <div id="t9wrapper">
+                <div class="teamDetails" id="t9">
+                  <h4>Mkulima “M” Britt</h4>
+                  <p>
+                    Prior to TurtleTree, Mkulima was an executive in the US
+                    dairy industry for +20 years. 'M' is an owner of Clover
+                    Sonoma and has lead the company in various roles, COO, CFO
+                    and during that time grew revenues 3x to $200M.
+                  </p>
+                </div>
+              </div>
+              <div id="t10wrapper">
+                <div class="teamDetails" id="t10">
+                  <h4>Billie Thein</h4>
+                  <p>
+                    Brand strategy and marketing in premium functional, dairy,
+                    and plant-based food and beverage.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2 class="content__text"></h2>
+        </div>
+        <p class="fullBottomLine"></p>
+        <div class="content__section" id="media">
+          <div class="story">
+            <h1>Media</h1>
+            <div class="container">
+              <% if (news_posts) { %> <% if (news_posts.length > 0) { %>
+              <div class="row">
+                <% news_posts.forEach((news_post, index) => {%>
+                <div
+                  class="col-lg-4 col-12 teamCards"
+                  onclick="window.location='view_post/<%= news_post.id %>'"
+                >
+                  <img
+                    src="/upload/news_post/<%= news_post.img %>"
+                    style="width: 100%; height: 200px;"
+                    alt=""
+                  />
+                  <p class="name"><%= news_post.title %></p>
+                  <div  class="desig" >
+                    <p><%- news_post.detail %></p>
+                  </div>
+                </div>
+                <% }) %> <% } %> <% } %>
+              </div>
+            </div>
+            <h2 class="content__text"></h2>
+          </div>
+        </div>
+        <p class="fullBottomLine"></p>
+        <div class="content__section" id="contact">
+          <div class="story">
+            <h1 style="margin-bottom: 30px;">Contact.</h1>
+            <h5 style="font-family: 'regular';">For U.S. Media Inquires:</h5>
+            <p style="color:#88959E; margin-bottom: 30px;">
+              us.media@turtletreelabs.com
+            </p>
+            <h5 style="font-family: 'regular';">For Asia Inquires:</h5>
+            <p style="color:#88959E">asia.media@turtletreelabs.com</p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div>
+          <div class="row">
+            <div class="col-lg-4 col-12">
+              <h5 class="location">Singapore</h5>
+              <div class="locaDetails">
+                <p>
+                  79 Ayer Rajah Crescent, #05-03 Block 79,
+
+                  <br />
+                  Singapore 139955
+                </p>
+                <p>
+                  © 2020 TurtleTree Labs All rights reserved
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-12">
+              <h5 class="location">San Francisco</h5>
+              <div class="locaDetails">
+                <p>
+                  814 Mission Street, 6th Floor
+
+                  <br />
+                  San Francisco, CA, 94103
+                  <br />
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-12 " style="margin:auto">
+              <div class="footerLogo">
+                <img src="./assets/images/ftLogo.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/charming.min.js"></script>
+    <script src="js/demo1.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/jquery.js"></script>
+  </body>
+</html>
