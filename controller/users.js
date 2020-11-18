@@ -11,6 +11,12 @@ module.exports = {
     let mobile = req.body.mobile;
     let password = req.body.password;
     let type = req.body.type;
+    let unit = req.body.unit;
+    let height = req.body.height;
+    let notification = req.body.notification;
+    let clientId = req.body.clientId;
+    let weight = req.body.weight
+    let avatar = req.body.avatar;
     let creationDate = new Date();
     let updatedDate = new Date()
     if (name) {
@@ -42,8 +48,20 @@ module.exports = {
                       });
                     } else {
                       let query =
-                        "INSERT INTO user(name,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
+                        "INSERT INTO user(name,avatar,unit,height,notification,weight,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
                         name +
+                        "','" +
+                        avatar +
+                        "','" +
+                        unit +
+                        "','" +
+                        height +
+                        "','" +
+                        notification +
+                        "','" +
+                        weight +
+                        "','" +
+                        clientId +
                         "','" +
                         dob +
                         "','" +
@@ -158,15 +176,41 @@ module.exports = {
     let updatedDate = new Date()
     let dob = req.body.dob;
     let gender = req.body.gender;
+    let unit = req.body.unit;
+    let height = req.body.height;
+    let notification = req.body.notification;
+    let clientId = req.body.clientId;
+    let weight = req.body.weight
+    let avatar = req.body.avatar
     let query =
       "UPDATE user SET name = " +
       "'" +
       name +
       "'" +
       "," +
-      "mobile=" +
+      "unit=" +
       "'" +
-      mobile +
+      unit +
+      "'" +
+      "," +
+      "height=" +
+      "'" +
+      height +
+      "'" +
+      "," +
+      "notification=" +
+      "'" +
+      notification +
+      "'" +
+      "," +
+      "clientId=" +
+      "'" +
+      clientId +
+      "'" +
+      "," +
+      "weight=" +
+      "'" +
+      weight +
       "'" +
       "," +
       "dob=" +
@@ -177,6 +221,11 @@ module.exports = {
       "gender=" +
       "'" +
       gender +
+      "'" +
+      "," +
+      "avatar=" +
+      "'" +
+      avatar +
       "'" +
       "," +
       "updatedDate=" +
@@ -326,6 +375,8 @@ module.exports = {
                   email: user[0].email,
                   mobile: user[0].mobile,
                   type: user[0].type,
+
+
                 },
                 "hereIsMySpecialToken",
                 {
@@ -360,7 +411,12 @@ module.exports = {
                   mobile: user[0].mobile,
                   type: user[0].type,
                   gender: user[0].gender,
-                  dob: user[0].dob,
+                  unit: user[0].unit,
+                  height: user[0].height,
+                  notification: user[0].notification,
+                  clientId: user[0].clientId,
+                  weight: user[0].weight,
+                  avatar: user[0].avatar,
                 },
                 "hereIsMySpecialToken",
                 {
