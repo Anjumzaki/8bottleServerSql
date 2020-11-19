@@ -35,86 +35,79 @@ module.exports = {
               message: "Email/Username already exists",
             });
           } else {
-            if (mobile) {
-              if (password) {
-                console.log("ASD");
-                if (type) {
-                  bcrypt.hash(password, 10, function (err, hash) {
-                    // console.log("ASD");
-                    if (err) {
-                      res.status(500).send({
-                        success: "false",
-                        message: "ASDsda1123",
-                      });
-                    } else {
-                      let query =
-                        "INSERT INTO user(name,avatar,unit,height,notification,weight,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
-                        name +
-                        "','" +
-                        avatar +
-                        "','" +
-                        unit +
-                        "','" +
-                        height +
-                        "','" +
-                        notification +
-                        "','" +
-                        weight +
-                        "','" +
-                        clientId +
-                        "','" +
-                        dob +
-                        "','" +
-                        gender +
-                        "','" +
-                        email +
-                        "','" +
-                        mobile +
-                        "','" +
-                        hash +
-                        "','" +
-                        type +
-                        "','" +
-                        creationDate +
-                        "','" +
-                        updatedDate +
-                        "','" +
-                        "1" +
-                        "')";
-                      console.log(query);
-                      db.query(query, (err, result) => {
-                        if (err) {
-                          return res.status(400).send({
-                            success: "false",
-                            message: err,
-                            error: "Is here",
-                          });
-                        } else {
-                          return res.status(201).send({
-                            success: "true",
-                            message: "user added succesfully",
-                            id: result.insertId,
-                          });
-                        }
-                      });
-                    }
-                  });
-                } else {
-                  res.status(400).send({
-                    success: "false",
-                    message: "type is required",
-                  });
-                }
+            if (password) {
+              console.log("ASD");
+              if (type) {
+                bcrypt.hash(password, 10, function (err, hash) {
+                  // console.log("ASD");
+                  if (err) {
+                    res.status(500).send({
+                      success: "false",
+                      message: "ASDsda1123",
+                    });
+                  } else {
+                    let query =
+                      "INSERT INTO user(name,avatar,unit,height,notification,weight,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
+                      name +
+                      "','" +
+                      avatar +
+                      "','" +
+                      unit +
+                      "','" +
+                      height +
+                      "','" +
+                      notification +
+                      "','" +
+                      weight +
+                      "','" +
+                      clientId +
+                      "','" +
+                      dob +
+                      "','" +
+                      gender +
+                      "','" +
+                      email +
+                      "','" +
+                      mobile +
+                      "','" +
+                      hash +
+                      "','" +
+                      type +
+                      "','" +
+                      creationDate +
+                      "','" +
+                      updatedDate +
+                      "','" +
+                      "1" +
+                      "')";
+                    console.log(query);
+                    db.query(query, (err, result) => {
+                      if (err) {
+                        return res.status(400).send({
+                          success: "false",
+                          message: err,
+                          error: "Is here",
+                        });
+                      } else {
+                        return res.status(201).send({
+                          success: "true",
+                          message: "user added succesfully",
+                          id: result.insertId,
+                        });
+                      }
+                    });
+                  }
+                });
               } else {
                 res.status(400).send({
                   success: "false",
-                  message: "password is required",
+                  message: "type is required",
                 });
               }
             } else {
               res.status(400).send({
                 success: "false",
-                message: "mobile is required",
+                message: "password is required",
               });
             }
           }
