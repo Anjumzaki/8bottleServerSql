@@ -118,7 +118,6 @@ module.exports = {
           message: "email is required",
         });
       }
-
     } else {
       res.status(400).send({
         success: "false",

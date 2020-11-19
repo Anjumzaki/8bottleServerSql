@@ -1,9 +1,9 @@
 const mysql = require("mysql");
 const db = {
   host: "us-cdbr-east-02.cleardb.com",
-  user: "b1b7d0cef158b4",
-  password: "74cae0d1",
-  database: "heroku_b5563ab70495610",
+  user: "b2d022681c048b",
+  password: "e505af4e",
+  database: "heroku_030ff3851a4ecae",
   port: 3306
 };
 // db.connect((err) => {
