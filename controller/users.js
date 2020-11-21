@@ -409,6 +409,9 @@ module.exports = {
                   clientId: user[0].clientId,
                   weight: user[0].weight,
                   avatar: user[0].avatar,
+                  dob: user[0].dob,
+                  year: user[0].year,
+
                 },
                 "hereIsMySpecialToken",
                 {
