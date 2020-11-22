@@ -17,6 +17,9 @@ module.exports = {
     let clientId = req.body.clientId;
     let weight = req.body.weight
     let avatar = req.body.avatar;
+    let loggedType = req.body.loggedType;
+    let fbID = req.body.fbID
+    let GID = req.body.GID;
     let creationDate = new Date();
     let updatedDate = new Date()
     if (name) {
@@ -47,10 +50,16 @@ module.exports = {
                     });
                   } else {
                     let query =
-                      "INSERT INTO user(name,avatar,unit,height,notification,weight,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
+                      "INSERT INTO user(name,avatar,loggedType,fbID,GID,unit,height,notification,weight,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
                       name +
                       "','" +
                       avatar +
+                      "','" +
+                      loggedType +
+                      "','" +
+                      fbID +
+                      "','" +
+                      GID +
                       "','" +
                       unit +
                       "','" +
@@ -174,6 +183,9 @@ module.exports = {
     let clientId = req.body.clientId;
     let weight = req.body.weight
     let avatar = req.body.avatar
+    let loggedType = req.body.loggedType;
+    let fbID = req.body.fbID
+    let GID = req.body.GID;
     let query =
       "UPDATE user SET name = " +
       "'" +
@@ -183,6 +195,21 @@ module.exports = {
       "unit=" +
       "'" +
       unit +
+      "'" +
+      "," +
+      "loggedType=" +
+      "'" +
+      loggedType +
+      "'" +
+      "," +
+      "fbID=" +
+      "'" +
+      fbID +
+      "'" +
+      "," +
+      "GID=" +
+      "'" +
+      GID +
       "'" +
       "," +
       "height=" +
@@ -411,7 +438,9 @@ module.exports = {
                   avatar: user[0].avatar,
                   dob: user[0].dob,
                   year: user[0].year,
-
+                  loggedType: user[0].loggedType,
+                  fbID: user[0].fbID,
+                  GID: user[0].GID,
                 },
                 "hereIsMySpecialToken",
                 {
