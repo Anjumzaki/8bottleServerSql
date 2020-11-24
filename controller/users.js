@@ -186,6 +186,8 @@ module.exports = {
     let loggedType = req.body.loggedType;
     let fbID = req.body.fbID
     let GID = req.body.GID;
+    let year = req.body.year
+
     let query =
       "UPDATE user SET name = " +
       "'" +
@@ -205,6 +207,11 @@ module.exports = {
       "fbID=" +
       "'" +
       fbID +
+      "'" +
+      "," +
+      "year=" +
+      "'" +
+      year +
       "'" +
       "," +
       "GID=" +
