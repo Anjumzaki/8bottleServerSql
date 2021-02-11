@@ -383,98 +383,160 @@ module.exports = {
         });
       }
       if (user.length > 0) {
-        console.log(user.type);
-        if (user[0].type == "admin") {
-          bcrypt.compare(req.body.password, user[0].password, (err, result) => {
-            if (err) {
-              return res.status(401).send({
-                message: "Auth failed",
-              });
-            }
-            if (result) {
-              const token = jwt.sign(
-                {
-                  userId: user[0].userId,
-                  email: user[0].email,
-                  userId: user[0].userID,
-                  name: user[0].name,
-                  email: user[0].email,
-                  mobile: user[0].mobile,
-                  type: user[0].type,
-
-
-                },
-                "hereIsMySpecialToken",
-                {
-                  expiresIn: "720h",
-                }
-              );
-              return res.status(200).send({
-                message: "Auth successful",
-                token: token,
-              });
-            } else {
-              return res.status(401).send({
-                message: "Auth failed",
-              });
-            }
-          });
-          return;
-        } else if (user[0].type == "user" || user[0].type == "customer") {
-          bcrypt.compare(req.body.password, user[0].password, (err, result) => {
-            if (err) {
-              return res.status(401).send({
-                message: "Auth failed",
-              });
-            }
-            if (result) {
-              const token = jwt.sign(
-                {
-                  email: user[0].email,
-                  userId: user[0].userId,
-                  name: user[0].name,
-                  email: user[0].email,
-                  mobile: user[0].mobile,
-                  type: user[0].type,
-                  gender: user[0].gender,
-                  unit: user[0].unit,
-                  height: user[0].height,
-                  notification: user[0].notification,
-                  clientId: user[0].clientId,
-                  weight: user[0].weight,
-                  avatar: user[0].avatar,
-                  dob: user[0].dob,
-                  year: user[0].year,
-                  loggedType: user[0].loggedType,
-                  fbID: user[0].fbID,
-                  GID: user[0].GID,
-                },
-                "hereIsMySpecialToken",
-                {
-                  expiresIn: "720h",
-                }
-              );
-              return res.status(200).send({
-                message: "Auth successful",
-                token: token,
-              });
-            } else {
-              return res.status(401).send({
-                message: "Auth failed",
-              });
-            }
-          });
-        } else {
-          return res.status(404).send({
-            success: "false",
-            message: "type is incorrect",
-          });
-        }
+        bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+          if (err) {
+            return res.status(401).send({
+              message: "Auth failed",
+            });
+          }
+          if (result) {
+            const token = jwt.sign(
+              {
+                email: user[0].email,
+                userId: user[0].userId,
+                name: user[0].name,
+                email: user[0].email,
+                mobile: user[0].mobile,
+                type: user[0].type,
+                gender: user[0].gender,
+                unit: user[0].unit,
+                height: user[0].height,
+                notification: user[0].notification,
+                clientId: user[0].clientId,
+                weight: user[0].weight,
+                avatar: user[0].avatar,
+                dob: user[0].dob,
+                year: user[0].year,
+                loggedType: user[0].loggedType,
+                fbID: user[0].fbID,
+                GID: user[0].GID,
+              },
+              "hereIsMySpecialToken",
+              {
+                expiresIn: "720h",
+              }
+            );
+            return res.status(200).send({
+              message: "Auth successful",
+              token: token,
+            });
+          } else {
+            return res.status(401).send({
+              message: "Auth failed",
+            });
+          }
+        });
       } else {
         res.status(404).send({
           success: "false",
           message: "User Does not exists",
           // user: result,
+        });
+      }
+    });
+  },
+  fbLogin: (req, res) => {
+    let fbID = req.body.fbID;
+    let query =
+      "SELECT * FROM user WHERE fbID=" +
+      "'" +
+      fbID +
+      "'";
+    db.query(query, (err, user) => {
+      if (err) {
+        console.log(err);
+        return res.status(400).send({
+          success: "false",
+          message: err,
+        });
+      }
+      if (user.length > 0) {
+        const token = jwt.sign(
+          {
+            email: user[0].email,
+            userId: user[0].userId,
+            name: user[0].name,
+            email: user[0].email,
+            mobile: user[0].mobile,
+            type: user[0].type,
+            gender: user[0].gender,
+            unit: user[0].unit,
+            height: user[0].height,
+            notification: user[0].notification,
+            clientId: user[0].clientId,
+            weight: user[0].weight,
+            avatar: user[0].avatar,
+            dob: user[0].dob,
+            year: user[0].year,
+            loggedType: user[0].loggedType,
+            fbID: user[0].fbID,
+            GID: user[0].GID,
+          },
+          "hereIsMySpecialToken",
+          {
+            expiresIn: "720h",
+          }
+        );
+        return res.status(200).send({
+          message: "Auth successful",
+          token: token,
+        });
+      } else {
+        return res.status(401).send({
+          message: "Auth failed",
+        });
+      }
+    });
+  },
+  googleLogin: (req, res) => {
+    let GID = req.body.GID;
+    let query =
+      "SELECT * FROM user WHERE GID=" +
+      "'" +
+      GID +
+      "'";
+    db.query(query, (err, user) => {
+      if (err) {
+        console.log(err);
+        return res.status(400).send({
+          success: "false",
+          message: err,
+        });
+      }
+      if (user.length > 0) {
+        const token = jwt.sign(
+          {
+            email: user[0].email,
+            userId: user[0].userId,
+            name: user[0].name,
+            email: user[0].email,
+            mobile: user[0].mobile,
+            type: user[0].type,
+            gender: user[0].gender,
+            unit: user[0].unit,
+            height: user[0].height,
+            notification: user[0].notification,
+            clientId: user[0].clientId,
+            weight: user[0].weight,
+            avatar: user[0].avatar,
+            dob: user[0].dob,
+            year: user[0].year,
+            loggedType: user[0].loggedType,
+            fbID: user[0].fbID,
+            GID: user[0].GID,
+          },
+          "hereIsMySpecialToken",
+          {
+            expiresIn: "720h",
+          }
+        );
+        return res.status(200).send({
+          message: "Auth successful",
+          token: token,
+        });
+      } else {
+        return res.status(401).send({
+          message: "Auth failed",
         });
       }
     });

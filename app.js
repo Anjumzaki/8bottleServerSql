@@ -30,14 +30,10 @@ const {
   checkEmail,
   checkNumber,
   forgotPassword,
+  fbLogin,
+  googleLogin
 } = require("./controller/users.js");
 
-// const {
-//   addGuest,
-//   getGuest,
-//   editGuest,
-//   guestLogin,
-// } = require("./controller/guest.js");
 const {
   addCompany,
   getCompanies,
@@ -46,20 +42,7 @@ const {
   deleteCompanies,
   getCompanyByCategID
 } = require("./controller/company.js");
-// const {
-//   addStore,
-//   getStores,
-//   editStore,
-//   getStore,
-//   getStoreStatus,
-//   changeStoreStatus,
-//   getStoreUser,
-// } = require("./controller/store.js");
-// const {
-//   addLocation,
-//   getLocation,
-//   editLocation,
-// } = require("./controller/location.js");
+
 const {
   addCategory,
   getCategories,
@@ -67,51 +50,12 @@ const {
   getCategory,
   deleteCategory,
 } = require("./controller/category.js");
-// const {
-//   addProduct,
-//   getProduct,
-//   getProducts,
-//   editProduct,
-// } = require("./controller/product.js");
-// const {
-//   addItem,
-//   getItem,
-//   getItems,
-//   editItem,
-//   getStoreItem,
-//   deleteItem,
-//   getFeaturedItem,
-//   getStoreAllItem,
-//   getStoreItemAll
-// } = require("./controller/item.js");
-// const {
-//   addTransaction,
-//   getTransaction,
-//   getTransactions,
-//   editTransaction,
-//   getStoreTransaction,
-//   getStoreTransactionWithStatus,
-//   chnageTransactionStatusCode,
-//   getStoreTransactionStats,
-//   getStoreTransactionByDate,
-//   getTransactionByState,
-//   chnageTransactionItemQuantity,
-// } = require("./controller/transaction.js");
+
 const {
   addSubCategory,
   getSubCategory,
 } = require("./controller/subCategory.js");
-// const {
-//   addStoreTimings,
-//   editStoreTimings,
-//   getStoreTimings,
-// } = require("./controller/storeTimings.js");
-// const {
-//   addRef_trans_products,
-//   editRef_trans_prod,
-//   getRef_trans_prod,
-//   deleteRef_trans_prod,
-// } = require("./controller/ref_trans_products.js");
+
 const {
   addRef_prod_fav,
   editRef_prod_fav,
@@ -121,7 +65,6 @@ const {
   userStoreRef_prod_fav,
 } = require("./controller/ref_prod_fav.js");
 
-// const { addFavourites, editFavourites } = require("./controller/favourites.js");
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -134,13 +77,7 @@ app.use((req, res, next) => {
   }
   next();
 });
-// //
-// app.get("/v1/ref_trans_products/:id", checkAuth, getRef_trans_prod);
-// app.post("/v1/ref_trans_products", checkAuth, addRef_trans_products);
-// app.put("/v1/ref_trans_products/:id", checkAuth, editRef_trans_prod);
-// app.delete("/v1/ref_trans_products/:id", checkAuth, deleteRef_trans_prod);
 
-// //ref_favs_items
 app.get("/v1/ref_prod_fav/:id", checkAuth, getRef_prod_fav);
 app.post("/v1/ref_prod_fav", checkAuth, addRef_prod_fav);
 app.put("/v1/ref_prod_fav/:id", checkAuth, editRef_prod_fav);
@@ -153,60 +90,23 @@ app.get(
 );
 
 
-// // storeTimings
-// app.post("/v1/storeTimings", checkAuth, addStoreTimings);
-// app.put("/v1/storeTimings/:id/:day", checkAuth, editStoreTimings);
-// app.get("/v1/storeTimings/:id", checkAuth, getStoreTimings);
+
 
 //Sub Categories
 app.post("/v1/recent", checkAuth, addSubCategory);
 app.get("/v1/recent/:id", checkAuth, getSubCategory);
 
-// //Transaction
-// // app.get("/v1/transaction", checkAuth, getTransactions);
-// app.post("/v1/transaction", checkAuth, addTransaction);
-// app.put("/v1/transaction/:id", checkAuth, editTransaction);
-// app.get("/v1/transaction/:id", checkAuth, getTransaction); //done
-// app.get(
-//   "/v1/transaction/status/:id/:code",
-//   checkAuth,
-//   getStoreTransactionWithStatus
-// ); //done
-// app.get("/v1/transaction/store/:id", checkAuth, getStoreTransaction); //done
-// app.put(
-//   "/v1/transaction/status/:id/:code",
-//   checkAuth,
-//   chnageTransactionStatusCode
-// );
-// app.put(
-//   "/v1/transaction/itemQuantity/:orderId/:itemId",
-//   checkAuth,
-//   chnageTransactionItemQuantity
-// );
-
-// app.get("/v1/transaction/stats/:storeID", checkAuth, getStoreTransactionStats);
-// app.get("/v1/transaction/date/:id/:date", checkAuth, getStoreTransactionByDate);
-// app.get(
-//   "/v1/transaction/state/:table/:search/:id",
-//   checkAuth,
-//   getTransactionByState
-// );
-
 //users
 app.post("/v1/user", addUser);
 app.get("/v1/user", checkAuth, getUsers);
 app.get("/v1/user/:id", checkAuth, getUser);
-app.put("/v1/user/:id", checkAuth, editUser);
+app.put("/v1/user/:id", editUser);
 app.post("/v1/login/user", userLogin);
 app.get("/v1/checkEmail/:id", checkEmail);
 app.get("/v1/checkNumber/:id", checkNumber);
 app.post("/v1/forgotPassword/", forgotPassword);
-
-// //guest
-// app.post("/v1/guest", addGuest);
-// app.get("/v1/guest/:id", checkAuth, getGuest);
-// app.put("/v1/guest/:id", checkAuth, editGuest);
-// app.post("/v1/login/guest", guestLogin);
+app.post("/v1/fbLogin/", fbLogin);
+app.post("/v1/googleLogin/", googleLogin);
 
 //companies
 app.get("/v1/place", checkAuth, getCompanies);
@@ -216,42 +116,12 @@ app.post("/v1/place/:id", checkAuth, getCompany);
 app.delete("/v1/place/:id", checkAuth, deleteCompanies);
 app.get("/v1/placeyCateg/:id", checkAuth, getCompanyByCategID);
 
-
-// //locations
-// app.post("/v1/location", checkAuth, addLocation);
-// app.post("/v1/location/:id", checkAuth, getLocation);
-// app.put("/v1/location/:id", checkAuth, editLocation);
-// //Store
-// app.get("/v1/store", getStores);
-// app.post("/v1/store", checkAuth, addStore);
-// app.put("/v1/store/:id", checkAuth, editStore);
-// app.post("/v1/store/:id", checkAuth, getStore);
-// app.get("/v1/store/status/:status", checkAuth, getStoreStatus);
-// app.put("/v1/store/status/:status/:id", checkAuth, changeStoreStatus);
-// app.post("/v1/store/users/:id", checkAuth, getStoreUser);
 // //Category
 app.get("/v1/category", checkAuth, getCategories);
 app.post("/v1/category", checkAuth, addCategory);
 app.put("/v1/category/:id", checkAuth, editCategory);
 app.post("/v1/category/:id", checkAuth, getCategory);
 app.delete("/v1/category/:id", checkAuth, deleteCategory);
-// //Product
-// app.get("/v1/product", checkAuth, getProducts);
-// app.post("/v1/product", checkAuth, addProduct);
-// app.put("/v1/product/:id", checkAuth, editProduct);
-// app.post("/v1/product/:id", checkAuth, getProduct);
-// //item
-// app.get("/v1/item", checkAuth, getItems);
-// app.post("/v1/item", checkAuth, addItem);
-// app.put("/v1/item/:id", checkAuth, editItem);
-// app.post("/v1/item/:id", checkAuth, getItem);
-// app.delete("/v1/item/:id", checkAuth, deleteItem);
-// app.post("/v1/item/store/:id", checkAuth, getStoreItem);
-// app.post("/v1/all/item/store/:id", checkAuth, getStoreAllItem);
-
-// app.get("/v1/item/featured/:id", checkAuth, getFeaturedItem);
-// app.get("/v2/item/all/store/:id", checkAuth, getStoreItemAll);
-// /v1/email/verification/anjumzaki8@gmail.com/565656
 
 
 app.get("/v1/email/verification/:email/:num", async (req, res) => {
@@ -305,33 +175,6 @@ app.get("/v1/email/verification/:email/:num", async (req, res) => {
   );
 });
 
-//post user
-// app.get("/v1/number/verification/:number1/:num", async (req, res) => {
-//   // console.log("HIT", req.params);
-//   client.messages
-//     .create({
-//       body:
-//         " Hi User, Thanks for your interest in joining The Node! To complete your registration please Enter Code: " +
-//         req.params.num +
-//         " in your mobile.",
-//       from: "+12055707812",
-//       to: req.params.number1,
-//     })
-//     .then((message) => {
-//       console.log("messgae", message);
-//       res.status(200).send({
-//         success: "true",
-//         message: message.sid,
-//       });
-//     })
-//     .catch((err) =>
-//       res.status(404).send({
-//         success: "false",
-//         message: "Something really bad happens",
-//         err,
-//       })
-//     );
-// });
 setInterval(function () {
   db.query("SELECT 1");
   console.log("query");
