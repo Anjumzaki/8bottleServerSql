@@ -64,6 +64,10 @@ const {
   userRef_prod_fav,
   userStoreRef_prod_fav,
 } = require("./controller/ref_prod_fav.js");
+const {
+  addFriend_req,
+  getUserFriendRequests,
+} = require("./controller/requests.js");
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -77,6 +81,8 @@ app.use((req, res, next) => {
   }
   next();
 });
+app.get("/v1/getUserFriendRequests/:id", checkAuth, getUserFriendRequests);
+app.post("/v1/addFriend_req", checkAuth, addFriend_req);
 
 app.get("/v1/ref_prod_fav/:id", checkAuth, getRef_prod_fav);
 app.post("/v1/ref_prod_fav", checkAuth, addRef_prod_fav);
