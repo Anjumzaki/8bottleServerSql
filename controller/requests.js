@@ -102,7 +102,7 @@ module.exports = {
                     } else {
                         res.status(201).send({
                             success: "true",
-                            message: "Freind request sent",
+                            message: "Freind added",
                             id: result.insertId,
                         });
                     }
@@ -122,7 +122,7 @@ module.exports = {
     },
     getUserFriends: (req, res) => {
         let query =
-            "SELECT * FROM ref_friends LEFT JOIN user on ref_friends.friendID = user.userId  where ref_friends.userID=" +
+            "SELECT * FROM ref_friends LEFT JOIN user on ref_friends.userID = user.userId  where ref_friends.userID=" +
             req.params.id;
         db.query(query, (err, result) => {
             if (err) {
