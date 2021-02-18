@@ -85,7 +85,7 @@ module.exports = {
         if (userID) {
             if (friendID) {
                 let query =
-                    "INSERT INTO ref_friends(userID,friendID,createdAt) VALUES('" +
+                    "INSERT INTO ref_friends(userID,friendID,freindDates) VALUES('" +
                     userID +
                     "','" +
                     friendID +
