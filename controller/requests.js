@@ -60,4 +60,81 @@ module.exports = {
             }
         });
     },
+    deleteFreindRequest: (req, res) => {
+        let query =
+            "DELETE FROM requests WHERE reqID=" +
+            req.params.id;
+        db.query(query, (err, result) => {
+            if (err) {
+                res.status(400).send({
+                    success: "false",
+                    message: err,
+                });
+            } else {
+                res.status(201).send({
+                    success: "true",
+                    result: result,
+                });
+            }
+        });
+    },
+    addFriend: (req, res) => {
+        let userID = req.body.userID;
+        let friendID = req.body.friendID;
+        let freindDates = new Date();
+        if (userID) {
+            if (friendID) {
+                let query =
+                    "INSERT INTO ref_friends(userID,friendID,createdAt) VALUES('" +
+                    userID +
+                    "','" +
+                    friendID +
+                    "','" +
+                    freindDates +
+                    "')";
+                db.query(query, (err, result) => {
+                    if (err) {
+                        res.status(400).send({
+                            success: "false",
+                            message: "Something went wrong",
+                        });
+                    } else {
+                        res.status(201).send({
+                            success: "true",
+                            message: "Freind request sent",
+                            id: result.insertId,
+                        });
+                    }
+                });
+            } else {
+                res.status(400).send({
+                    success: "false",
+                    message: "friendID is required",
+                });
+            }
+        } else {
+            res.status(400).send({
+                success: "false",
+                message: "userID  is required",
+            });
+        }
+    },
+    getUserFriends: (req, res) => {
+        let query =
+            "SELECT * FROM ref_friends LEFT JOIN user on ref_friends.friendID = user.userId  where ref_friends.userID=" +
+            req.params.id;
+        db.query(query, (err, result) => {
+            if (err) {
+                res.status(400).send({
+                    success: "false",
+                    message: err,
+                });
+            } else {
+                res.status(201).send({
+                    success: "true",
+                    result: result,
+                });
+            }
+        });
+    },
 };
