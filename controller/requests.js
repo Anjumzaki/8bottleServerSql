@@ -97,6 +97,7 @@ module.exports = {
                         res.status(400).send({
                             success: "false",
                             message: "Something went wrong",
+                            err
                         });
                     } else {
                         res.status(201).send({
