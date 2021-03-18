@@ -20,6 +20,8 @@ module.exports = {
     let loggedType = req.body.loggedType;
     let fbID = req.body.fbID
     let GID = req.body.GID;
+    let activity = req.body.activity;
+
     let creationDate = new Date();
     let updatedDate = new Date()
     if (name) {
@@ -50,8 +52,10 @@ module.exports = {
                     });
                   } else {
                     let query =
-                      "INSERT INTO user(name,avatar,loggedType,fbID,GID,unit,height,notification,weight,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
+                      "INSERT INTO user(name,activity,avatar,loggedType,fbID,GID,unit,height,notification,weight,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
                       name +
+                      "','" +
+                      activity +
                       "','" +
                       avatar +
                       "','" +
@@ -170,6 +174,56 @@ module.exports = {
       }
     });
   },
+  hydrationGoal: (req, res) => {
+
+    //gender
+    const MALE_MULTIPLIER_VALUE = 1.0;
+    const FEMALE_MULTIPLIER_VALUE = 0.9;
+
+    //Activity level
+    const ACTIVITY_LEVEL_NOT_ACTIVE = "Not Active";
+    const ACTIVITY_LEVEL_ACTIVE = "Active";
+    const ACTIVITY_LEVEL_VERY_ACTIVE = "Very Active";
+    const ACTIVITY_LEVEL_NOT_ACTIVE_VAL = 0.0;
+    const ACTIVITY_LEVEL_ACTIVE_VAL = 30.0;
+    const ACTIVITY_LEVEL_VERY_ACTIVE_VAL = 60.0;
+
+    // Age
+    const AGE_MULTIPLIER_LIMIT = 40.0;
+    const WEIGHT_MULTIPLIER = 0.45;
+    const HEIGHT_MULTIPLIER = 10.0;
+    const HEIGHT_DIVIDER = 70.0;
+    const ACTIVITY_LEVEL_DIVIDER = 30.0;
+    const ACTIVITY_LEVEL_MULTIPLIER = 12.0;
+
+    let query =
+      "SELECT * FROM user WHERE userID=" +
+      req.params.id;
+    db.query(query, (err, result) => {
+      if (err) {
+        res.status(400).send({
+          success: "false",
+          message: err,
+        });
+      } else {
+        let age = new Date().getFullYear() - parseFloat(result[0].dob)
+        let weight = result[0].weight.match(/(\d+)/);
+        weight = weight[0]
+        let height = result[0].height
+        let activityLevel = 30
+        ageMultiplyer = age <= AGE_MULTIPLIER_LIMIT ? MALE_MULTIPLIER_VALUE : FEMALE_MULTIPLIER_VALUE;
+        let genderMultiplyer = result[0].gender == 'Male' ? MALE_MULTIPLIER_VALUE : FEMALE_MULTIPLIER_VALUE;
+        let abc = (weight * WEIGHT_MULTIPLIER) + ((height / HEIGHT_DIVIDER) * HEIGHT_MULTIPLIER);
+        def = abc * genderMultiplyer * ageMultiplyer;
+        hydrationLevel = def + ((activityLevel / ACTIVITY_LEVEL_DIVIDER) * ACTIVITY_LEVEL_MULTIPLIER);
+        res.status(201).send({
+          success: "true",
+          // message: "company added succesfully",
+          result: Math.round(hydrationLevel * 100) / 100,
+        });
+      }
+    });
+  },
   editUser: (req, res) => {
     console.log(req.body);
     let name = req.body.name;
@@ -187,6 +241,7 @@ module.exports = {
     let fbID = req.body.fbID
     let GID = req.body.GID;
     let year = req.body.year
+    let activity = req.body.activity;
 
     let query =
       "UPDATE user SET name = " +
@@ -197,6 +252,11 @@ module.exports = {
       "unit=" +
       "'" +
       unit +
+      "'" +
+      "," +
+      "activity=" +
+      "'" +
+      activity +
       "'" +
       "," +
       "loggedType=" +
@@ -410,6 +470,7 @@ module.exports = {
                 loggedType: user[0].loggedType,
                 fbID: user[0].fbID,
                 GID: user[0].GID,
+                activity: user[0].activity,
               },
               "hereIsMySpecialToken",
               {

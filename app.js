@@ -31,7 +31,8 @@ const {
   checkNumber,
   forgotPassword,
   fbLogin,
-  googleLogin
+  googleLogin,
+  hydrationGoal
 } = require("./controller/users.js");
 
 const {
@@ -120,6 +121,8 @@ app.get("/v1/checkNumber/:id", checkNumber);
 app.post("/v1/forgotPassword/", forgotPassword);
 app.post("/v1/fbLogin/", fbLogin);
 app.post("/v1/googleLogin/", googleLogin);
+app.get("/v1/hydrationGoal/:id", hydrationGoal);
+
 
 //companies
 app.get("/v1/place", checkAuth, getCompanies);
