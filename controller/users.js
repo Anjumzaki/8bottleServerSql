@@ -175,7 +175,6 @@ module.exports = {
     });
   },
   hydrationGoal: (req, res) => {
-
     //gender
     const MALE_MULTIPLIER_VALUE = 1.0;
     const FEMALE_MULTIPLIER_VALUE = 0.9;
@@ -189,6 +188,7 @@ module.exports = {
     const ACTIVITY_LEVEL_VERY_ACTIVE_VAL = 60.0;
 
     // Age
+
     const AGE_MULTIPLIER_LIMIT = 40.0;
     const WEIGHT_MULTIPLIER = 0.45;
     const HEIGHT_MULTIPLIER = 10.0;
