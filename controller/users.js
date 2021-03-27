@@ -206,7 +206,7 @@ module.exports = {
           message: err,
         });
       } else {
-        let age = new Date().getFullYear() - parseFloat(result[0].dob)
+        let age = result[0].dob ? new Date().getFullYear() - parseFloat(result[0].dob) : 0
         let weight = result[0].weight.match(/(\d+)/);
         weight = weight[0] ? weight[0] : 0
         let height = result[0].height
