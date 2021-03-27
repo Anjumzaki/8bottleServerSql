@@ -208,7 +208,7 @@ module.exports = {
       } else {
         let age = new Date().getFullYear() - parseFloat(result[0].dob)
         let weight = result[0].weight.match(/(\d+)/);
-        weight = weight[0]
+        weight = weight[0] ? weight[0] : 0
         let height = result[0].height
         let activityLevel = 30
         ageMultiplyer = age <= AGE_MULTIPLIER_LIMIT ? MALE_MULTIPLIER_VALUE : FEMALE_MULTIPLIER_VALUE;
