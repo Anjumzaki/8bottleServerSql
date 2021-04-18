@@ -21,7 +21,6 @@ module.exports = {
     let fbID = req.body.fbID
     let GID = req.body.GID;
     let activity = req.body.activity;
-
     let creationDate = new Date();
     let updatedDate = new Date()
     if (name) {
@@ -210,7 +209,7 @@ module.exports = {
         let weight = result[0].weight.match(/(\d+)/);
         weight = weight[0] ? weight[0] : 0
         let height = result[0].height
-        let activityLevel = 30
+        let activityLevel = result[0].activity ? result[0].activity : 0
         ageMultiplyer = age <= AGE_MULTIPLIER_LIMIT ? MALE_MULTIPLIER_VALUE : FEMALE_MULTIPLIER_VALUE;
         let genderMultiplyer = result[0].gender == 'Male' ? MALE_MULTIPLIER_VALUE : FEMALE_MULTIPLIER_VALUE;
         let abc = (weight * WEIGHT_MULTIPLIER) + ((height / HEIGHT_DIVIDER) * HEIGHT_MULTIPLIER);
@@ -242,7 +241,6 @@ module.exports = {
     let GID = req.body.GID;
     let year = req.body.year
     let activity = req.body.activity;
-
     let query =
       "UPDATE user SET name = " +
       "'" +
