@@ -115,7 +115,7 @@ module.exports = {
         });
       } else {
         res.status(201).send({
-          success: "false",
+          success: "true",
           result: result,
         });
       }
@@ -124,7 +124,7 @@ module.exports = {
   getZebraCheck: (req, res) => {
     res.status(200).send({
       success: "true",
-      check: 'false',
+      check: 'true',
     });
   },
   deleteCategory: (req, res) => {
