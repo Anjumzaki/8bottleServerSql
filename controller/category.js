@@ -124,7 +124,7 @@ module.exports = {
   getZebraCheck: (req, res) => {
     res.status(200).send({
       success: "true",
-      check: 'true',
+      check: 'false',
     });
   },
   deleteCategory: (req, res) => {
