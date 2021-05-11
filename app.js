@@ -50,6 +50,7 @@ const {
   editCategory,
   getCategory,
   deleteCategory,
+  getZebraCheck
 } = require("./controller/category.js");
 
 const {
@@ -138,6 +139,8 @@ app.post("/v1/category", checkAuth, addCategory);
 app.put("/v1/category/:id", checkAuth, editCategory);
 app.post("/v1/category/:id", checkAuth, getCategory);
 app.delete("/v1/category/:id", checkAuth, deleteCategory);
+app.get("/v1/getZebraCheck", getZebraCheck);
+
 
 
 app.get("/v1/email/verification/:email/:num", async (req, res) => {

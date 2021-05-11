@@ -121,6 +121,12 @@ module.exports = {
       }
     });
   },
+  getZebraCheck: (req, res) => {
+    res.status(200).send({
+      success: "true",
+      check: 'true',
+    });
+  },
   deleteCategory: (req, res) => {
     let query = "DELETE  FROM category WHERE categoryID=" + req.params.id;
     db.query(query, (err, result) => {
