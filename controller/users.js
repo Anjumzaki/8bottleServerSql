@@ -346,11 +346,16 @@ module.exports = {
         });
       } else {
         if (result.length > 0) {
+          res.status(200).send({
+            success: "true",
+            result: result,
+          });
+        }else{
+          res.status(400).send({
+            success: "false",
+            message: "No user found",
+          });
         }
-        res.status(200).send({
-          success: "true",
-          result: result,
-        });
       }
     });
   },
