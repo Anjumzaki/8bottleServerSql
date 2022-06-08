@@ -18,7 +18,9 @@ module.exports = {
     let weight = req.body.weight
     let avatar = req.body.avatar;
     let loggedType = req.body.loggedType;
-    let fbID = req.body.fbID
+    let fbID = req.body.fbID;
+    let age = req.body.fbID;
+    let goal = req.body.fbID;
     let GID = req.body.GID;
     let activity = req.body.activity;
     let creationDate = new Date();
@@ -51,8 +53,12 @@ module.exports = {
                     });
                   } else {
                     let query =
-                      "INSERT INTO user(name,activity,avatar,loggedType,fbID,GID,unit,height,notification,weight,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
+                      "INSERT INTO user(name,age,goal,activity,avatar,loggedType,fbID,GID,unit,height,notification,weight,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
                       name +
+                      "','" +
+                      age +
+                      "','" +
+                      goal +
                       "','" +
                       activity +
                       "','" +
