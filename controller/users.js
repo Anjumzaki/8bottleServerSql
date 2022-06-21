@@ -13,9 +13,11 @@ module.exports = {
     let type = req.body.type;
     let unit = req.body.unit;
     let height = req.body.height;
+    let heightUnit = req.body.heightUnit;
     let notification = req.body.notification;
     let clientId = req.body.clientId;
     let weight = req.body.weight
+    let weightUnit = req.body.weightUnit
     let avatar = req.body.avatar;
     let loggedType = req.body.loggedType;
     let fbID = req.body.fbID;
@@ -53,7 +55,7 @@ module.exports = {
                     });
                   } else {
                     let query =
-                      "INSERT INTO user(name,age,goal,activity,avatar,loggedType,fbID,GID,unit,height,notification,weight,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
+                      "INSERT INTO user(name,age,goal,activity,avatar,loggedType,fbID,GID,unit,height,heightUnit,notification,weight,weightUnit,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
                       name +
                       "','" +
                       age +
@@ -74,9 +76,13 @@ module.exports = {
                       "','" +
                       height +
                       "','" +
+                      heightUnit +
+                      "','" +
                       notification +
                       "','" +
                       weight +
+                      "','" +
+                      weightUnit +
                       "','" +
                       clientId +
                       "','" +
