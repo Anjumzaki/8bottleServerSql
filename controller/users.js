@@ -24,7 +24,7 @@ module.exports = {
     let age = req.body.fbID;
     let goal = req.body.fbID;
     let GID = req.body.GID;
-    let activity = req.body.activity;
+    let activity = req.body.activity || 0;
     let creationDate = new Date();
     let updatedDate = new Date()
     if (name) {
