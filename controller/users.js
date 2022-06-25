@@ -480,6 +480,7 @@ module.exports = {
                 notification: user[0].notification,
                 clientId: user[0].clientId,
                 weightUnit: user[0].weightUnit,
+                weight: user[0].weight,
                 avatar: user[0].avatar,
                 dob: user[0].dob,
                 year: user[0].year,
