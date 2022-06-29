@@ -77,6 +77,11 @@ const {
   getUserFriends
 } = require("./controller/requests.js");
 
+const {
+  addHydrationGoal,
+  getHydrationGoal
+} = require("./controller/hydrationGoal.js");
+
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -114,6 +119,10 @@ app.get(
 //Sub Categories
 app.post("/v1/recent", checkAuth, addSubCategory);
 app.get("/v1/recent/:id", checkAuth, getSubCategory);
+
+//Hydration Goal
+app.post("/v1/hydrationGoal/add/:id", addHydrationGoal);
+app.get("/v1/get/hydrationGoal/:id", getHydrationGoal);
 
 //users
 app.post("/v1/user", addUser);
