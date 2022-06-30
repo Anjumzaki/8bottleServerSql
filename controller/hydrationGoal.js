@@ -75,6 +75,7 @@ module.exports = {
           "')";
         db.query(query, (err, result) => {
           if (err) {
+            console.log('err: ', err);
             res.status(400).send({
               success: "false",
               message: "Something went wrong",

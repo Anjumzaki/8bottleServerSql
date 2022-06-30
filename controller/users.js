@@ -244,9 +244,11 @@ module.exports = {
     let gender = req.body.gender;
     let unit = req.body.unit;
     let height = req.body.height;
+    let heightUnit = req.body.heightUnit;
     let notification = req.body.notification;
     let clientId = req.body.clientId;
     let weight = req.body.weight
+    let weightUnit = req.body.weightUnit
     let avatar = req.body.avatar
     let loggedType = req.body.loggedType;
     let fbID = req.body.fbID
@@ -294,6 +296,11 @@ module.exports = {
       height +
       "'" +
       "," +
+      "heightUnit=" +
+      "'" +
+      heightUnit +
+      "'" +
+      "," +
       "notification=" +
       "'" +
       notification +
@@ -307,6 +314,11 @@ module.exports = {
       "weight=" +
       "'" +
       weight +
+      "'" +
+      "," +
+      "weightUnit=" +
+      "'" +
+      weightUnit +
       "'" +
       "," +
       "dob=" +
