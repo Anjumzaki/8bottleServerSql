@@ -30,9 +30,14 @@ module.exports = {
       if (unit == "Metric") {
         weight = weight * 2.20462;
         height = height * 0.393701;
+      } else {
+        height = height.split(" ")[0].replace("'", "")
+        console.log('height: ', height);
+        weight = weight.split(" ")[0].replace("'", "")
+        console.log('weightInFeet: ', weight);
       }
       let ageMultiplyer = age <= AGE_MULTIPLIER_LIMIT ? MALE_MULTIPLIER_VALUE : FEMALE_MULTIPLIER_VALUE;
-      let gednerMultiplyer = gender===MALE ? MALE_MULTIPLIER_VALUE : FEMALE_MULTIPLIER_VALUE;
+      let gednerMultiplyer = gender === MALE ? MALE_MULTIPLIER_VALUE : FEMALE_MULTIPLIER_VALUE;
 
       let abc = (weight * WEIGHT_MULTIPLIER) + ((height / HEIGHT_DIVIDER) * HEIGHT_MULTIPLIER);
       let def = abc * gednerMultiplyer * ageMultiplyer;
@@ -40,7 +45,6 @@ module.exports = {
 
       return Math.round(hydrationLevel * 100) / 100;
     }
-
     let query1 =
       "SELECT * FROM user WHERE userID=" +
       req.params.id;
