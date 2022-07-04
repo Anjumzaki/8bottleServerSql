@@ -31,8 +31,14 @@ module.exports = {
         weight = weight * 2.20462;
         height = height * 0.393701;
       } else {
-        height = height.split(" ")[0].replace("'", "")
-        console.log('height: ', height);
+        if(height.includes(" ")){
+          let height1 = height.split(" ")[0]
+          console.log('height1: ', height1);
+          let height2 = height.split(" ")[1]
+          console.log('height2: ', height2);
+          height = height1+'.'+height2
+          console.log('height: ', height);
+        }
         weight = weight.split(" ")[0].replace("'", "")
         console.log('weightInFeet: ', weight);
       }
@@ -65,15 +71,15 @@ module.exports = {
         let unit = data[0]?.unit
         let reqData = getHydrationLevel(weight, height, age, gender, activityLevel, unit)
         console.log('reqData: ', reqData);
-        let hydrationGoal = reqData
+        let hydGoal = reqData
         let userId = req.params.id
         let query =
-          "INSERT INTO hydrationGoal(creationDate,hydrationGoal,userId,updatedDate) VALUES('" +
+          "INSERT INTO hydrationGoal(creationDate,userId,hydGoal,updatedDate) VALUES('" +
           creationDate +
           "','" +
-          hydrationGoal +
-          "','" +
           userId +
+          "','" +
+          hydGoal +
           "','" +
           updatedDate +
           "')";
