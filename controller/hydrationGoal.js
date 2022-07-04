@@ -73,9 +73,13 @@ module.exports = {
         console.log('reqData: ', reqData);
         let hydGoal = reqData
         let userId = req.params.id
+        let waterLevel = req.body.waterLevel || ''
+        console.log('waterLevel: ', waterLevel);
         let query =
-          "INSERT INTO hydrationGoal(creationDate,userId,hydGoal,updatedDate) VALUES('" +
+          "INSERT INTO hydrationGoal(creationDate,waterLevel,userId,hydGoal,updatedDate) VALUES('" +
           creationDate +
+          "','" +
+          waterLevel +
           "','" +
           userId +
           "','" +
