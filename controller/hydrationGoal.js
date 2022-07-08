@@ -31,23 +31,34 @@ module.exports = {
         weight = weight * 2.20462;
         height = height * 0.393701;
       } else {
-        if(height.includes(" ")){
+        if (height.includes(" ")) {
           let height1 = height.split(" ")[0]
           console.log('height1: ', height1);
           let height2 = height.split(" ")[1]
           console.log('height2: ', height2);
-          height = height1+'.'+height2
+          height = height1 + '.' + height2
           console.log('height: ', height);
         }
         weight = weight.split(" ")[0].replace("'", "")
         console.log('weightInFeet: ', weight);
+      }
+
+      let activityLevelVal = 0
+      if (activityLevel === ACTIVITY_LEVEL_NOT_ACTIVE) {
+        activityLevelVal = ACTIVITY_LEVEL_NOT_ACTIVE_VAL
+      } else if (activityLevel === ACTIVITY_LEVEL_ACTIVE) {
+        activityLevelVal = ACTIVITY_LEVEL_ACTIVE_VAL
+      }
+      else {
+        activityLevelVal = ACTIVITY_LEVEL_VERY_ACTIVE_VAL
       }
       let ageMultiplyer = age <= AGE_MULTIPLIER_LIMIT ? MALE_MULTIPLIER_VALUE : FEMALE_MULTIPLIER_VALUE;
       let gednerMultiplyer = gender === MALE ? MALE_MULTIPLIER_VALUE : FEMALE_MULTIPLIER_VALUE;
 
       let abc = (weight * WEIGHT_MULTIPLIER) + ((height / HEIGHT_DIVIDER) * HEIGHT_MULTIPLIER);
       let def = abc * gednerMultiplyer * ageMultiplyer;
-      let hydrationLevel = def + ((activityLevel / ACTIVITY_LEVEL_DIVIDER) * ACTIVITY_LEVEL_MULTIPLIER);
+      let hydrationLevel = def + ((activityLevelVal / ACTIVITY_LEVEL_DIVIDER) * ACTIVITY_LEVEL_MULTIPLIER);
+      console.log('hydrationLevel: ', hydrationLevel);
 
       return Math.round(hydrationLevel * 100) / 100;
     }
@@ -68,6 +79,7 @@ module.exports = {
         let age = data[0]?.age || 0
         let gender = data[0].gender
         let activityLevel = data[0]?.activity || ACTIVITY_LEVEL_NOT_ACTIVE_VAL
+        console.log('activityLevel: ', activityLevel);
         let unit = data[0]?.unit
         let reqData = getHydrationLevel(weight, height, age, gender, activityLevel, unit)
         console.log('reqData: ', reqData);
