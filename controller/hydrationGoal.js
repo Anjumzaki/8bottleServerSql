@@ -67,7 +67,7 @@ module.exports = {
         let height = data[0]?.height
         let age = data[0]?.age || 0
         let gender = data[0].gender
-        let activityLevel = data[0]?.activityLevel || 0
+        let activityLevel = data[0]?.activity || ACTIVITY_LEVEL_NOT_ACTIVE_VAL
         let unit = data[0]?.unit
         let reqData = getHydrationLevel(weight, height, age, gender, activityLevel, unit)
         console.log('reqData: ', reqData);
