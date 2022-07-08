@@ -58,7 +58,6 @@ module.exports = {
       let abc = (weight * WEIGHT_MULTIPLIER) + ((height / HEIGHT_DIVIDER) * HEIGHT_MULTIPLIER);
       let def = abc * gednerMultiplyer * ageMultiplyer;
       let hydrationLevel = def + ((activityLevelVal / ACTIVITY_LEVEL_DIVIDER) * ACTIVITY_LEVEL_MULTIPLIER);
-      console.log('hydrationLevel: ', hydrationLevel);
 
       return Math.round(hydrationLevel * 100) / 100;
     }
@@ -79,14 +78,12 @@ module.exports = {
         let age = data[0]?.age || 0
         let gender = data[0].gender
         let activityLevel = data[0]?.activity || ACTIVITY_LEVEL_NOT_ACTIVE_VAL
-        console.log('activityLevel: ', activityLevel);
         let unit = data[0]?.unit
         let reqData = getHydrationLevel(weight, height, age, gender, activityLevel, unit)
         console.log('reqData: ', reqData);
         let hydGoal = reqData
         let userId = req.params.id
         let waterLevel = req.body.waterLevel || ''
-        console.log('waterLevel: ', waterLevel);
         let query =
           "INSERT INTO hydrationGoal(creationDate,waterLevel,userId,hydGoal,updatedDate) VALUES('" +
           creationDate +
