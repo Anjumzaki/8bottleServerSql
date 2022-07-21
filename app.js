@@ -82,6 +82,11 @@ const {
   getHydrationGoal
 } = require("./controller/hydrationGoal.js");
 
+const {
+  addNotification,
+  getAllNotifications
+} = require("./controller/notification.js");
+
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -123,6 +128,10 @@ app.get("/v1/recent/:id", checkAuth, getSubCategory);
 //Hydration Goal
 app.post("/v1/hydrationGoal/add/:id", addHydrationGoal);
 app.get("/v1/get/hydrationGoal/:id", getHydrationGoal);
+
+//Notification
+app.post("/v1/notification/add", addNotification);
+app.get("/v1/get/Notification", getAllNotifications);
 
 //users
 app.post("/v1/user", addUser);

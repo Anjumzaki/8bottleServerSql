@@ -1,4 +1,6 @@
 const e = require("express");
+// let baseUrl = "http://localhost:5000/"
+let baseUrl = "https://eightbottleserver.herokuapp.com/"
 
 module.exports = {
     addFriend_req: (req, res) => {
@@ -24,9 +26,18 @@ module.exports = {
                     } else {
                         res.status(201).send({
                             success: "true",
-                            message: "Freind request sent",
+                            message: "Friend request sent",
                             id: result.insertId,
                         });
+                        axios.post(baseUrl + "v1/notification/add", {
+                            userID: req.body.recieverID,
+                            clientID: req.body.clientID,
+                            newNoti: req.body.newNoti,
+                            seen: req.body.seen,
+                            creationDate: new Date()
+                        }).catch((err) => {
+                            console.log(String(err));
+                        })
                     }
                 });
             } else {
