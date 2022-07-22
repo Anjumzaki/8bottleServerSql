@@ -1,7 +1,7 @@
 const e = require("express");
 const axios = require("axios");
-// let baseUrl = "http://localhost:5000/"
-let baseUrl = "https://eightbottleserver.herokuapp.com/"
+let baseUrl = "http://localhost:5000/"
+// let baseUrl = "https://eightbottleserver.herokuapp.com/"
 
 module.exports = {
     addFriend_req: (req, res) => {
@@ -30,8 +30,9 @@ module.exports = {
                             message: "Friend request sent",
                             id: result.insertId,
                         });
+                        console.log('userID:', recieverID);
                         axios.post(baseUrl + "v1/notification/add", {
-                            userID: req.body.recieverID,
+                            userID: recieverID,
                             clientID: req.body.clientID,
                             newNoti: req.body.newNoti,
                             seen: req.body.seen,
