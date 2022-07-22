@@ -151,4 +151,22 @@ module.exports = {
             }
         });
     },
+    friendRequestsByUser: (req, res) => {
+        let query =
+            "SELECT * FROM requests where senderID=" +
+            req.params.id;
+        db.query(query, (err, result) => {
+            if (err) {
+                res.status(400).send({
+                    success: "false",
+                    message: err,
+                });
+            } else {
+                res.status(201).send({
+                    success: "true",
+                    result: result,
+                });
+            }
+        });
+    },
 };
