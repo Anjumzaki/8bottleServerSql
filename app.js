@@ -85,7 +85,8 @@ const {
 
 const {
   addNotification,
-  getAllNotifications
+  getAllNotifications,
+  getNotificationByUser
 } = require("./controller/notification.js");
 
 
@@ -107,6 +108,7 @@ app.delete("/v1/deleteFreindRequest/:id", checkAuth, deleteFreindRequest);
 app.post("/v1/addFriend", checkAuth, addFriend);
 app.get("/v1/getUserFriends/:id", checkAuth, getUserFriends);
 app.get("/v1/friendRequestsByUser/:id", checkAuth, friendRequestsByUser);
+app.get("/v1/getNotificationByUser/:id", checkAuth, getNotificationByUser);
 
 
 app.get("/v1/ref_prod_fav/:id", checkAuth, getRef_prod_fav);

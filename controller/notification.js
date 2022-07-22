@@ -43,7 +43,7 @@ module.exports = {
         temp.contents = { "en": req.body.newNoti }
         temp.include_player_ids = [req.body.clientID]
         console.log('temp: ', temp);
-        let userID = req.body.recieverID;
+        let userID = req.body.userID;
         let clientID = req.body.clientID;
         let newNoti = req.body.newNoti;
         let seen = req.body.seen;
@@ -119,9 +119,9 @@ module.exports = {
             }
         });
     },
-    getUserFriends: (req, res) => {
+    getNotificationByUser: (req, res) => {
         let query =
-            "SELECT * FROM ref_friends LEFT JOIN user on ref_friends.userID = user.userId  where ref_friends.userID=" +
+            "SELECT * FROM notification  where userID=" +
             req.params.id;
         db.query(query, (err, result) => {
             if (err) {
