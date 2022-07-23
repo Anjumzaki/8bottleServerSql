@@ -146,10 +146,29 @@ module.exports = {
                     message: err,
                 });
             } else {
-                res.status(201).send({
-                    success: "true",
-                    result: result,
-                });
+                if (result.length) {
+                    res.status(201).send({
+                        success: "true",
+                        result: result,
+                    });
+                } else {
+                    let query =
+                        "SELECT * FROM ref_friends LEFT JOIN user on ref_friends.userID = user.userId  where ref_friends.friendID=" +
+                        req.params.id;
+                    db.query(query, (err, result) => {
+                        if (err) {
+                            res.status(400).send({
+                                success: "false",
+                                message: err,
+                            });
+                        } else {
+                            res.status(201).send({
+                                success: "true",
+                                result: result,
+                            });
+                        }
+                    })
+                }
             }
         });
     },
