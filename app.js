@@ -75,6 +75,7 @@ const {
   deleteFreindRequest,
   addFriend,
   getUserFriends,
+  editRequests,
   friendRequestsByUser
 } = require("./controller/requests.js");
 
@@ -105,6 +106,7 @@ app.use((req, res, next) => {
 });
 app.get("/v1/getUserFriendRequests/:id", checkAuth, getUserFriendRequests);
 app.post("/v1/addFriend_req", checkAuth, addFriend_req);
+app.put("/v1/editRequests/:id", checkAuth, editRequests);
 app.delete("/v1/deleteFreindRequest/:id", checkAuth, deleteFreindRequest);
 app.post("/v1/addFriend", checkAuth, addFriend);
 app.get("/v1/getUserFriends/:id", checkAuth, getUserFriends);

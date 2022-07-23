@@ -96,14 +96,17 @@ module.exports = {
     addFriend: (req, res) => {
         let userID = req.body.userID;
         let friendID = req.body.friendID;
+        let accepted = req.body.accepted;
         let freindDates = new Date();
         if (userID) {
             if (friendID) {
                 let query =
-                    "INSERT INTO ref_friends(userID,friendID,freindDates) VALUES('" +
+                    "INSERT INTO ref_friends(userID,friendID,accepted,freindDates) VALUES('" +
                     userID +
                     "','" +
                     friendID +
+                    "','" +
+                    accepted +
                     "','" +
                     freindDates +
                     "')";
@@ -167,6 +170,32 @@ module.exports = {
                 res.status(201).send({
                     success: "true",
                     result: result,
+                });
+            }
+        });
+    },
+    editRequests: (req, res) => {
+        let accepted = "true";
+        let query =
+            "UPDATE requests SET accepted = " +
+            "'" +
+            accepted +
+            "'" +
+            " WHERE reqID=" +
+            req.params.id;
+        console.log(query);
+        db.query(query, (err, result) => {
+            if (err) {
+                res.status(400).send({
+                    success: "false",
+                    message: err,
+                });
+                console.log(err);
+            } else {
+                res.status(201).send({
+                    success: "true",
+                    message: "Request edited successfully",
+                    id: result,
                 });
             }
         });
