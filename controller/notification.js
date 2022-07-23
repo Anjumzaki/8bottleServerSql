@@ -124,7 +124,7 @@ module.exports = {
     },
     getNotificationByUser: (req, res) => {
         let query =
-            "SELECT * FROM notification INNER JOIN user WHERE user.userId =" + req.params.id;
+        "Select * from user Join notification  on notification.senderID=user.userId Where notification.userID=" + req.params.id;
         db.query(query, (err, result) => {
             if (err) {
                 res.status(400).send({
