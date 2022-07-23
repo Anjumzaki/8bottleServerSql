@@ -96,17 +96,14 @@ module.exports = {
     addFriend: (req, res) => {
         let userID = req.body.userID;
         let friendID = req.body.friendID;
-        let accepted = req.body.accepted;
         let freindDates = new Date();
         if (userID) {
             if (friendID) {
                 let query =
-                    "INSERT INTO ref_friends(userID,friendID,accepted,freindDates) VALUES('" +
+                    "INSERT INTO ref_friends(userID,friendID,freindDates) VALUES('" +
                     userID +
                     "','" +
                     friendID +
-                    "','" +
-                    accepted +
                     "','" +
                     freindDates +
                     "')";
