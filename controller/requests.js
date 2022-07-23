@@ -1,7 +1,7 @@
 const e = require("express");
 const axios = require("axios");
-let baseUrl = "http://localhost:5000/"
-// let baseUrl = "https://eightbottleserver.herokuapp.com/"
+// let baseUrl = "http://localhost:5000/"
+let baseUrl = "https://eightbottleserver.herokuapp.com/"
 
 module.exports = {
     addFriend_req: (req, res) => {
