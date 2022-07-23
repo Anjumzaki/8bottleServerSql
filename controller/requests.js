@@ -137,7 +137,7 @@ module.exports = {
     },
     getUserFriends: (req, res) => {
         let query =
-            "SELECT * FROM ref_friends LEFT JOIN user on ref_friends.userID = user.userId  where ref_friends.userID=" +
+            "SELECT * FROM ref_friends LEFT JOIN user on ref_friends.friendID = user.userId  where ref_friends.userID=" +
             req.params.id;
         db.query(query, (err, result) => {
             if (err) {
