@@ -44,13 +44,14 @@ module.exports = {
         temp.include_player_ids = [req.body.clientID]
         console.log('temp: ', temp);
         let userID = req.body.userID;
+        let senderID = req.body.senderID;
         let clientID = req.body.clientID;
         let newNoti = req.body.newNoti;
         let seen = req.body.seen;
         let creationDate = new Date();
         if (req.body.clientID) {
             let query =
-                "INSERT INTO notification(newNoti,seen, creationDate, clientID, userID) VALUES('" +
+                "INSERT INTO notification(newNoti, seen, creationDate, clientID, userID, senderID) VALUES('" +
                 newNoti +
                 "','" +
                 seen +
@@ -60,6 +61,8 @@ module.exports = {
                 clientID +
                 "','" +
                 userID +
+                "','" +
+                senderID +
                 "')";
             console.log(query)
             db.query(query, (err, result) => {
@@ -121,8 +124,7 @@ module.exports = {
     },
     getNotificationByUser: (req, res) => {
         let query =
-            "SELECT * FROM notification  where userID=" +
-            req.params.id;
+            "SELECT * FROM user INNER JOIN notification ON user.userId = (SELECT senderID FROM notification WHERE userID =" + req.params.id + ")";
         db.query(query, (err, result) => {
             if (err) {
                 res.status(400).send({
