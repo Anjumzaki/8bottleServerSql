@@ -122,9 +122,35 @@ module.exports = {
             }
         });
     },
+    editNotification: (req, res) => {
+        let seen = "true";
+        let query =
+            "UPDATE notification SET seen = " +
+            "'" +
+            seen +
+            "'" +
+            " WHERE userID=" +
+            req.params.id;
+        console.log(query);
+        db.query(query, (err, result) => {
+            if (err) {
+                res.status(400).send({
+                    success: "false",
+                    message: err,
+                });
+                console.log(err);
+            } else {
+                res.status(201).send({
+                    success: "true",
+                    message: "Notification edited successfully",
+                    id: result,
+                });
+            }
+        });
+    },
     getNotificationByUser: (req, res) => {
         let query =
-        "Select * from user Join notification  on notification.senderID=user.userId Where notification.userID=" + req.params.id;
+            "Select * from user Join notification  on notification.senderID=user.userId Where notification.userID=" + req.params.id;
         db.query(query, (err, result) => {
             if (err) {
                 res.status(400).send({

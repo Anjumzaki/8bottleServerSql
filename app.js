@@ -86,7 +86,8 @@ const {
 const {
   addNotification,
   getAllNotifications,
-  getNotificationByUser
+  getNotificationByUser,
+  editNotification
 } = require("./controller/notification.js");
 
 
@@ -135,7 +136,8 @@ app.get("/v1/get/hydrationGoal/:id", getHydrationGoal);
 
 //Notification
 app.post("/v1/notification/add", addNotification);
-app.get("/v1/get/Notification", getAllNotifications);
+app.get("/v1/get/notification", getAllNotifications);
+app.put("/v1/edit/notification/:id", editNotification);
 
 //users
 app.post("/v1/user", addUser);
