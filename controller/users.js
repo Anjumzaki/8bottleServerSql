@@ -21,7 +21,8 @@ module.exports = {
     let avatar = req.body.avatar;
     let loggedType = req.body.loggedType;
     let fbID = req.body.fbID;
-    let age = req.body.fbID;
+    let age = req.body.age;
+    let waterLevel = req.body.waterLevel;
     let goal = req.body.fbID;
     let GID = req.body.GID;
     let activity = req.body.activity || 0;
@@ -55,7 +56,7 @@ module.exports = {
                     });
                   } else {
                     let query =
-                      "INSERT INTO user(name,age,goal,activity,avatar,loggedType,fbID,GID,unit,height,heightUnit,notification,weight,weightUnit,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
+                      "INSERT INTO user(name,age,goal,activity,avatar,waterLevel,loggedType,fbID,GID,unit,height,heightUnit,notification,weight,weightUnit,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
                       name +
                       "','" +
                       age +
@@ -65,6 +66,8 @@ module.exports = {
                       activity +
                       "','" +
                       avatar +
+                      "','" +
+                      waterLevel +
                       "','" +
                       loggedType +
                       "','" +
@@ -255,6 +258,7 @@ module.exports = {
     let GID = req.body.GID;
     let year = req.body.year
     let activity = req.body.activity;
+    let waterLevel = req.body.waterLevel;
     let query =
       "UPDATE user SET name = " +
       "'" +
@@ -334,6 +338,11 @@ module.exports = {
       "avatar=" +
       "'" +
       avatar +
+      "'" +
+      "," +
+      "waterLevel=" +
+      "'" +
+      waterLevel +
       "'" +
       "," +
       "updatedDate=" +
@@ -500,6 +509,7 @@ module.exports = {
                 fbID: user[0].fbID,
                 GID: user[0].GID,
                 activity: user[0].activity,
+                waterLevel: user[0].waterLevel,
               },
               "hereIsMySpecialToken",
               {
@@ -563,6 +573,7 @@ module.exports = {
             loggedType: user[0].loggedType,
             fbID: user[0].fbID,
             GID: user[0].GID,
+            waterLevel: user[0].waterLevel,
           },
           "hereIsMySpecialToken",
           {
@@ -616,6 +627,7 @@ module.exports = {
             loggedType: user[0].loggedType,
             fbID: user[0].fbID,
             GID: user[0].GID,
+            waterLevel: user[0].waterLevel,
           },
           "hereIsMySpecialToken",
           {
