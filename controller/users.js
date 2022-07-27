@@ -25,6 +25,7 @@ module.exports = {
     let waterLevel = req.body.waterLevel;
     let goal = req.body.fbID;
     let GID = req.body.GID;
+    let waterPercentage = req.body.waterPercentage;
     let AvgWL = req.body.AvgWL;
     let activity = req.body.activity || 0;
     let creationDate = new Date();
@@ -57,7 +58,7 @@ module.exports = {
                     });
                   } else {
                     let query =
-                      "INSERT INTO user(name,age,goal,activity,avatar,waterLevel,AvgWL,loggedType,fbID,GID,unit,height,heightUnit,notification,weight,weightUnit,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
+                      "INSERT INTO user(name,age,goal,activity,avatar,waterLevel,waterPercentage,AvgWL,loggedType,fbID,GID,unit,height,heightUnit,notification,weight,weightUnit,clientId,dob,gender,email,mobile,password,type,creationDate,updatedDate,isActive) VALUES('" +
                       name +
                       "','" +
                       age +
@@ -69,6 +70,8 @@ module.exports = {
                       avatar +
                       "','" +
                       waterLevel +
+                      "','" +
+                      waterPercentage +
                       "','" +
                       AvgWL +
                       "','" +
@@ -259,6 +262,7 @@ module.exports = {
     let loggedType = req.body.loggedType;
     let fbID = req.body.fbID
     let GID = req.body.GID;
+    let waterPercentage = req.body.waterPercentage;
     let AvgWL = req.body.AvgWL;
     let year = req.body.year
     let activity = req.body.activity;
@@ -282,6 +286,11 @@ module.exports = {
       "AvgWL=" +
       "'" +
       AvgWL +
+      "'" +
+      "," +
+      "waterPercentage=" +
+      "'" +
+      waterPercentage +
       "'" +
       "," +
       "loggedType=" +
@@ -517,6 +526,7 @@ module.exports = {
                 loggedType: user[0].loggedType,
                 fbID: user[0].fbID,
                 GID: user[0].GID,
+                waterPercentage: user[0].waterPercentage,
                 AvgWL: user[0].AvgWL,
                 activity: user[0].activity,
                 waterLevel: user[0].waterLevel,
@@ -583,6 +593,7 @@ module.exports = {
             loggedType: user[0].loggedType,
             fbID: user[0].fbID,
             GID: user[0].GID,
+            waterPercentage: user[0].waterPercentage,
             AvgWL: user[0].AvgWL,
             waterLevel: user[0].waterLevel,
           },
@@ -638,6 +649,7 @@ module.exports = {
             loggedType: user[0].loggedType,
             fbID: user[0].fbID,
             GID: user[0].GID,
+            waterPercentage: user[0].waterPercentage,
             AvgWL: user[0].AvgWL,
             waterLevel: user[0].waterLevel,
           },
