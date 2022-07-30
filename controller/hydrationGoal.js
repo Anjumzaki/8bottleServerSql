@@ -2,6 +2,12 @@ const e = require("express");
 
 module.exports = {
   addHydrationGoal: async (req, res) => {
+    function calculate_age(dob) {
+      var diff_ms = Date.now() - dob.getTime();
+      var age_dt = new Date(diff_ms);
+      return Math.abs(age_dt.getUTCFullYear() - 1970);
+    }
+
     let creationDate = new Date();
     let updatedDate = new Date()
 
@@ -27,20 +33,18 @@ module.exports = {
     let ACTIVITY_LEVEL_MULTIPLIER = 12.0;
 
     function getHydrationLevel(weight, height, age, gender, activityLevel, unit) {
-      if (unit == "Metric") {
+      weight = weight.split(" ")[0]
+      
+      if (unit == "METRICS") {
         weight = weight * 2.20462;
         height = height * 0.393701;
       } else {
         if (height.includes(" ")) {
           let height1 = height.split(" ")[0]
-          console.log('height1: ', height1);
           let height2 = height.split(" ")[1]
-          console.log('height2: ', height2);
           height = height1 + '.' + height2
           console.log('height: ', height);
         }
-        weight = weight.split(" ")[0].replace("'", "")
-        console.log('weightInFeet: ', weight);
       }
 
       let activityLevelVal = 0
@@ -58,8 +62,13 @@ module.exports = {
       let abc = (weight * WEIGHT_MULTIPLIER) + ((height / HEIGHT_DIVIDER) * HEIGHT_MULTIPLIER);
       let def = abc * gednerMultiplyer * ageMultiplyer;
       let hydrationLevel = def + ((activityLevelVal / ACTIVITY_LEVEL_DIVIDER) * ACTIVITY_LEVEL_MULTIPLIER);
+      if (unit === "US") {
+        return Math.round(hydrationLevel * 100) / 100;
+      } else {
+        let res = Math.round(hydrationLevel * 100) / 100;
+        return (res * 29.57353 * 100) / 100
+      }
 
-      return Math.round(hydrationLevel * 100) / 100;
     }
     let query1 =
       "SELECT * FROM user WHERE userID=" +
@@ -72,10 +81,14 @@ module.exports = {
         });
       } else {
         let data = result
+        let year = moment(data.dob).format("YYYY")
+        let month = moment(data.dob).format("MM")
+        let day = moment(data.dob).format("DD")
+        let reqAge = calculate_age(new Date(year, month, day))
         console.log('data: ', data);
         let weight = data[0]?.weight
         let height = data[0]?.height
-        let age = data[0]?.age || 0
+        let age = reqAge || 0
         let gender = data[0].gender
         let activityLevel = data[0]?.activity || ACTIVITY_LEVEL_NOT_ACTIVE_VAL
         let unit = data[0]?.unit
